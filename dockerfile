@@ -25,6 +25,8 @@ RUN crontab /etc/cron.d/merakitosnipeit
 
 # Ensure the cron logs work
 RUN touch /app/logs/cron.log
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
 # Run cron in the foreground
 CMD ["cron", "-f"]
