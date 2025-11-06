@@ -1,0 +1,15 @@
+[Unit]
+Description=Meraki to Snipe-IT Sync Service
+After=network.target
+
+[Service]
+Type=oneshot
+User=syncer
+WorkingDirectory=/opt/merakitosnipeit
+EnvironmentFile=/opt/merakitosnipeit/.env
+ExecStart=/opt/merakitosnipeit/venv/bin/python3 /opt/merakitosnipeit/main.py
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

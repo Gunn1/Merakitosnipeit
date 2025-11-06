@@ -1,0 +1,16 @@
+[Unit]
+Description=Meraki to Snipe-IT Sync Timer
+Requires=merakitosnipeit.service
+
+[Timer]
+# Run daily at 2:00 AM
+OnCalendar=*-*-* 02:00:00
+# Run 1 minute after boot if service was missed
+OnBootSec=1min
+# Run immediately if timer was missed (e.g., system was off)
+Persistent=true
+# Unit to run
+Unit=merakitosnipeit.service
+
+[Install]
+WantedBy=timers.target
